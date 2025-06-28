@@ -1,10 +1,10 @@
-1.	Write a short statement of the problem and background . Explain why the problem you picked is important or interesting to your team and why you are interested in solving it ?
+
 Problem Statement
 
 This project focuses on developing machine learning models to predict the magnitude of earthquakes based on historical seismic data. The primary goal is to accurately impute missing data and classify the magnitude of earthquakes to enhance understanding and preparedness for seismic events.
 Background
 Earthquakes are one of the most devastating natural disasters, causing significant loss of life and property. Accurate prediction of earthquake magnitudes and understanding seismic patterns are crucial for disaster preparedness and mitigation efforts. Historical earthquake data often contains missing values and inconsistencies, making it challenging to analyse and draw meaningful conclusions. Imputing missing data accurately and developing robust predictive models can help in understanding seismic activities better.
-Importance and Interest
+
 This problem is significant because:
 1.	Disaster Preparedness: Accurate prediction models can help in early warning systems, allowing for timely evacuation and preparation measures, thereby saving lives and reducing economic losses.
 2.	Scientific Understanding: Understanding seismic patterns and behaviours contributes to the field of geophysics and helps scientists develop better theories and models of the Earth's crust and tectonic activities.
@@ -13,12 +13,6 @@ Our team is particularly interested in solving this problem due to its interdisc
 
 
 
-
-
-A short description of background research and literature reviews that your team did. What have others done in past to try to solve the problem, what advantages and disadvantages are these to different approach ? List all the references you used .
-Background Research
-
-In preparing this project, our team conducted extensive background research and literature review to understand the various approaches previously used to predict earthquake magnitudes. We focused on identifying techniques for handling missing data, imputation methods, and classification algorithms. Our primary sources included academic papers, online datasets, and expert articles in geophysics and machine learning.
 Previous Approaches
 1.	Statistical Methods:
 o	Regression Analysis: Simple linear regression models have been used to predict earthquake magnitudes based on historical data. However, these models often fail to capture the complex patterns in seismic data.
@@ -30,6 +24,7 @@ o	Neural Networks: Deep learning models, including Convolutional Neural Networks
 o	K-Nearest Neighbors (KNN): KNN imputation fills missing values based on the similarity of observations. It is simple to implement but may not handle high-dimensional data effectively.
 o	Multiple Imputation by Chained Equations (MICE): MICE iteratively imputes missing values using regression models. It is robust but can be computationally demanding.
 o	Iterative Imputer: This approach models each feature with missing values as a function of other features, iteratively improving the imputation. It provides flexibility in choosing different estimators but may be sensitive to the choice of the estimator.
+
 Advantages and Disadvantages of Different Approaches
 •	Statistical Methods:
 o	Advantages: Simple, interpretable, and require fewer computational resources.
@@ -40,17 +35,7 @@ o	Disadvantages: Require large datasets, intensive computational resources, and 
 •	Imputation Techniques:
 o	Advantages: Improve data completeness, enable the use of entire datasets for modeling.
 o	Disadvantages: May introduce bias if not appropriately applied, computationally intensive.
-References Used
-1.	ChatGPT: Used for debugging and refining code implementations.
-2.	Kaggle: Source of historical earthquake datasets.
-3.	Wikipedia: Used for background stories and historical data on significant earthquakes.
 
-
-
-
-
-
-Describe how AI method can be used to solve your problem . Give a detailed description of the algorithms involved and how they work . Discuss any result that you obtained or that you read in your literature review. Also comment on the computational resources needed to run your solution . What kind of advantages does AI provide ?
 
 AI Algorithms and Their Implementation
 To predict earthquake magnitudes, we utilize a combination of machine learning algorithms for data imputation and classification. Here’s a detailed description of the methods involved:
@@ -74,3 +59,14 @@ AI methods provide several advantages:
 •	Scalability: AI models can handle large datasets and scale with increasing data volume, making them suitable for big data applications.
 •	Adaptability: AI algorithms can continuously learn and adapt to new data, improving performance over time.
 
+| Imputer               | Classifier             | Best Params       | Best Score |
+| --------------------- | ---------------------- | ----------------- | ---------- |
+| BayesianRidge (MICE)  | KNeighborsClassifier   | n\_neighbors=120  | 0.6329     |
+| BayesianRidge (MICE)  | DecisionTreeClassifier | max\_depth=7      | 0.7129     |
+| BayesianRidge (MICE)  | LGBMClassifier         | n\_estimators=50  | 0.7304     |
+| ExtraTreesRegressor   | KNeighborsClassifier   | n\_neighbors=120  | 0.6315     |
+| ExtraTreesRegressor   | DecisionTreeClassifier | max\_depth=7      | 0.7121     |
+| ExtraTreesRegressor   | LGBMClassifier         | n\_estimators=100 | 0.7305     |
+| RandomForestRegressor | KNeighborsClassifier   | n\_neighbors=120  | 0.6311     |
+| RandomForestRegressor | DecisionTreeClassifier | max\_depth=7      | 0.7124     |
+| RandomForestRegressor | LGBMClassifier         | n\_estimators=50  | 0.7300     |
